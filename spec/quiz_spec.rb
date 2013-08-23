@@ -29,8 +29,8 @@ describe "an object called quiz" do
   end
 
   it "should not allow access or addition to the array directly" do
-    expect{quiz.arr}.to raise_error(NoMethodError)
-    expect{quiz.arr.push(4)}.to raise_error(NoMethodError)
+    expect{quiz.nums}.to raise_error(NoMethodError)
+    expect{quiz.nums.push(4)}.to raise_error(NoMethodError)
   end
 
   it "should allow for adding numbers to the array" do
