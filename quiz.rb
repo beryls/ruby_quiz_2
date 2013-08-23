@@ -9,7 +9,60 @@
 QUIZ_TOPICS = ["ruby", "rspec", "testing", "arrays", "objects"]
 
 # create a quiz object
+# object created in testing
+class Quiz
+  def initialize()
+    @nums = []
+    @other = []
+  end
 
+  def add(thing)
+    if thing.class == Fixnum
+      @nums.push(thing)
+    elsif thing.class == Array
+      thing.each do |item|
+        if item.class == Fixnum
+          @nums.push(item)
+        else
+          @other.push(item)
+        end
+      end
+    else
+      @other.push(thing)
+    end
+  end
+
+  def numbers()
+    return @nums
+  end
+
+  def trash()
+    return @other
+  end
+
+  def count(thing)
+    @nums.count(thing)
+  end
+
+  def rotate(amount)
+    amount = amount % @nums.length
+    if amount < @nums.length
+      to_move = @nums.slice!(0...amount)
+      @nums.push(to_move)
+      @nums.flatten!
+    end
+  end
+
+  def count_evens
+    evens = 0
+    @nums.each do |item|
+      if item % 2 == 0
+        evens += 1
+      end
+    end
+    return evens
+  end
+end
 # We can add numbers to it
 # quiz = Quiz.new
 # quiz.add(5)
